@@ -274,6 +274,8 @@ index ce01362..331b562 100644
 
 -   `git remote add [name] [url]`：添加一个新的远程仓库。
 
+注意：每个本地仓库所配置的远程仓库是相互独立的，不共享给其他仓库。通过 `git remote -v` 查看。
+
 - `git remote set-url <remote> <new-url>`：更新远程仓库URL
 
 在GitHub，这个url通常有两种：https和SSH
