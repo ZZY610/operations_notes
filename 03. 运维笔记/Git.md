@@ -234,17 +234,16 @@ git reset [--soft | --mixed | --hard] [HEAD]
 ### 2.7 比较差异
 * `git diff`：比较工作区、暂存区、本地仓库之间的差异；比较不同版本之间的差异；不同提交之间的差异；不同分支之间的差异。
 
-```bash
-git diff：比较工作目录中的文件与暂存区之间的差异。
-git diff --cached 或 git diff --staged：比较暂存区中的文件与最后一次提交（本地仓库）之间的差异。
-git diff commit1 commit2：比较两个提交之间的差异，可以使用提交的哈希值、分支名或标签名表示提交。
-git diff --color-words：以单词为单位显示差异，并使用颜色突出显示。
-git diff --stat：显示简略的统计信息，包括被修改的文件和文件中的插入/删除行数。
-git diff --name-only：仅显示被修改的文件的名称，而不显示具体的差异内容。
-git diff --ignore-space-change：忽略空格的更改，只比较实际的代码更改。
-git diff --ignore-case：忽略大小写的更改，不区分大小写地比较差异。
-git diff --dir-diff：在目录级别进行差异比较，显示目录之间的差异。
-```
+- `git diff [branch_name] [remote/banch_name]`：比较本地分支和远程仓库某分支之间的差异。
+
+- `git diff --cached` 或 `git diff --staged`：比较暂存区中的文件与最后一次提交（本地仓库）之间的差异。
+- `git diff commit1 commit2`：比较两个提交之间的差异，可以使用提交的哈希值、分支名或标签名表示提交。
+- `git diff --color-words`：以单词为单位显示差异，并使用颜色突出显示。
+- `git diff --stat`：显示简略的统计信息，包括被修改的文件和文件中的插入/删除行数。
+- `git diff --name-only`：仅显示被修改的文件的名称，而不显示具体的差异内容。
+- `git diff --ignore-space-change`：忽略空格的更改，只比较实际的代码更改。
+- `git diff --ignore-case`：忽略大小写的更改，不区分大小写地比较差异。
+- `git diff --dir-diff`：在目录级别进行差异比较，显示目录之间的差异。
 
 ```bash
 $ git diff
@@ -278,6 +277,8 @@ index ce01362..331b562 100644
 -   `git remote add [name] [url]`：添加一个新的远程仓库。
 
 注意：每个本地仓库所配置的远程仓库是相互独立的，不共享给其他仓库。通过 `git remote -v` 查看。
+
+- `git remote rm [name]`：删除一个远程仓库url记录。
 
 - `git remote set-url <remote> <new-url>`：更新远程仓库URL
 
