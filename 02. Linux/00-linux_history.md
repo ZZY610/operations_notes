@@ -316,3 +316,35 @@ Linux 操作系统的诞生、发展和成长过程始终依赖着五个重要�
 ![005](pic/004.jpg)
 
 ![006](pic/005.jpg)
+
+
+## Linux各种发行版本梳理
+
+1. **Debian 系列**：
+   - **Debian**：Debian 是一个以稳定性和自由软件为重点的 Linux 发行版，广泛用于服务器和桌面。
+   - **Ubuntu**：Ubuntu 是基于 Debian 的发行版，注重易用性和社区支持，有多种官方版本，如 Ubuntu Server 和 Ubuntu Desktop。
+   - **Linux Mint**：基于 Ubuntu，注重用户友好性和美观性。
+
+2. **Red Hat 系列**：
+   - **Red Hat Enterprise Linux (RHEL)**：主要用于企业环境，提供高度稳定性和支持，以及商业订阅服务。
+   - **CentOS**：以 RHEL 的源代码为基础构建的免费开源版本，用于开发和生产环境。
+   - **Fedora**：Red Hat 社区版，注重最新特性和技术的探索。
+
+3. **SUSE 系列**：
+   - **openSUSE**：社区版 SUSE Linux，提供不同桌面和服务器版本。
+   - **SUSE Linux Enterprise Server (SLES)**：面向企业的高度稳定和可扩展的 Linux 发行版。
+
+4. **Arch 系列**：
+   - **Arch Linux**：面向有经验的用户，提供高度自定义的系统和滚动更新。
+   - **Manjaro**：基于 Arch Linux，注重用户友好性，提供易用的安装和配置方式。
+
+5. **Gentoo 系列**：
+   - **Gentoo**：源代码导向的 Linux 发行版，用户需要从源代码编译软件包，以获得高度定制化的系统。
+
+6. **Slackware 系列**：
+   - **Slackware**：最古老的仍在维护的 Linux 发行版，以简单和稳定著称。
+
+7. **其他发行版**：
+   - **Kali Linux**：用于渗透测试和网络安全的 Debian 派生版。
+   - **Elementary OS**：注重美观和用户友好性的发行版。
+   - **Oracle Linux**：由 Oracle 提供的用于企业的 Linux 发行版。

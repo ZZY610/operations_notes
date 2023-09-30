@@ -68,10 +68,10 @@ tracert是Windows操作系统下的一个命令行工具，用于诊断网络通
 ### 4. arp
 显示和操作本地主机的ARP高速缓存。ARP（Address Resolution Protocol）是一个协议，用于将IP地址映射到物理硬件地址，以便于在局域网中进行通信。
 
-* arp -a： 打印本地arp缓存
-* arp -d： 清除本地arp缓存
-* arp -s <ip地址> <物理地址> ：添加静态ARP条目，手动配置网络设备的IP地址和MAC地址。
-* arp -d：删除arp静态条目
+* `arp -a`： 打印本地arp缓存
+* `arp -d`： 清除本地arp缓存
+* `arp -s <ip地址> <物理地址>` ：添加静态ARP条目，手动配置网络设备的IP地址和MAC地址。
+* `arp -d`：删除arp静态条目
 
 ### 5. netstat
 显示协议统计信息和当前 TCP/IP 网络连接。
@@ -111,6 +111,54 @@ netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>]
 * `route change`：可以使用本命令来修改数据的传输路由，不过，用户不能使用本命令来改变数据的目的地。下面这个例子将上例路由改变采用一条包含3个网段的路径：
   route add 192.168.1.1 mask 255.255.255.0 192.168.6.1 metric 3
 * `route delete`：使用本命令可以从路由表中删除路由。例如：route delete 192.168.1.1
+
+### 7. nslookup
+
+执行 **DNS 查询**域名对应的IP地址。DNS（Domain Name System）是一个分布式的命名系统，用于将人类可读的域名（如 www.example.com）转换为计算机可理解的 IP 地址（如 192.168.1.1）。
+
+1. **命令格式**：
+   
+   ```plaintext
+   nslookup [选项] [主机名] [DNS服务器]
+   ```
+
+   - `[选项]`：用于指定不同的查询选项，如设置查询类型、指定要使用的 DNS 服务器等。
+   - `[主机名]`：要查询的域名或主机名。
+   - `[DNS服务器]`：可选参数，用于指定要查询的 DNS 服务器的 IP 地址。
+
+2. **使用示例**：
+
+   - 基本域名解析：
+
+     ```plaintext
+     nslookup www.example.com
+     ```
+
+     这会返回 www.example.com 的 IP 地址。
+
+   - 反向解析：
+
+     ```plaintext
+     nslookup 192.168.1.1
+     ```
+
+     这会尝试查找 IP 地址 192.168.1.1 对应的域名。
+
+   - 查询 MX 记录：
+
+     ```plaintext
+     nslookup -query=mx example.com
+     ```
+
+     这会返回 example.com 的邮件交换记录。
+
+   - 指定 DNS 服务器：
+
+     ```plaintext
+     nslookup www.example.com 8.8.8.8
+     ```
+
+     这会使用 Google 的 DNS 服务器（IP 地址 8.8.8.8）进行查询。
 
 ## 进程相关
 
