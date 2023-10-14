@@ -48,7 +48,7 @@ Ping命令是一个用于测试与另一台计算机之间连接是否正常的�
 #### 参数
 * `ipconfig` ：显示基本的 **网卡** 配置信息，如ip地址、子网掩码、缺省网关。
 
-* `ipconfig/all` ：在显示基础的配置信息上，同时显示是否使用了 **DHCP、MAC地址、租约时间、DNS**等 .
+* `ipconfig/all` ：在显示基础的配置信息上，同时显示是否使用了 **DHCP、MAC地址、租约时间、DNS**等。
 
 * `ipconfig/release` 和 `ipconfig/renew` ：在DHCP自动获取地址的时候有时候会获取到 `169.X.X.X` ，这时候就需要释放IP，对地址进行重新获取。前者用于释放当前IP，后者用于重新获取IP。
 * `ipconfig/flushdns`：清除DNS解析器的缓存。
@@ -165,11 +165,11 @@ netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>]
 ### 1.  tasklist
 列出当前正在运行的进程，展示进程的详细信息，包括进程ID、会话号、内存使用等。可以通过添加参数来筛选输出结果，例如：
 
-*   **/FI** "FILTER"：根据过滤器来筛选进程。
+*   `/FI` "FILTER"：根据过滤器来筛选进程。
     * `tasklist /FI "IMAGENAME eq notepad.exe"` 只显示名为 notepad.exe 的进程。
     * `tasklist /FI "PID eq 7140"` 查找pid为7140的进程。
-*   **/SVC**：显示进程与服务的关联。
-*   **/V**：显示详细信息。
+*   `/SVC`：显示进程与服务的关联。
+*   `/V`：显示详细信息。
 
 ### 2.  taskkill
 taskkill 命令用于结束一个或多个进程。可以通过进程 ID（PID）或映像名称来指定要结束的进程。例如：

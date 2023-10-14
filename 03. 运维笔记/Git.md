@@ -233,6 +233,7 @@ git reset [--soft | --mixed | --hard] [HEAD]
 
 ### 2.7 比较差异
 * `git diff`：比较工作区、暂存区、本地仓库之间的差异；比较不同版本之间的差异；不同提交之间的差异；不同分支之间的差异。
+    * 只输入git diff命令并执行，将比较**工作区**（当前工作目录）和**暂存区**（index）的差异
 
 - `git diff [branch_name] [remote/banch_name]`：比较本地分支和远程仓库某分支之间的差异。
 
