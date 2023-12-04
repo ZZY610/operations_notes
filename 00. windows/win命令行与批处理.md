@@ -3,7 +3,10 @@
 * **DOS**（`Disk Operating System`）：Microsoft在1981年推出的，早期个人电脑上广泛使用的操作系统。
     * 用户可以通过键入命令到DOS的命令行界面来执行操作。DOS的命令行语法与后来的Windows操作系统保持了很大的相似性。
 
-* **CMD**（`Command Prompt`）：Windows中的命令行工具，用于在Windows中执行DOS命令和批处理文件。CMD支持的命令与DOS相似，但在Windows操作系统中提供了更多的功能。
+* **CMD**（`Command Prompt`）：Windows中的命令行工具，用于在Windows中执行DOS命令和批处理文件。CMD 继承自 DOS ，同时包含Win特有的命令和功能。
+
+* **批处理**（`Batch Processing`）：批处理是一种将**一系列命令按照一定顺序组织在一个文本文件中**，然后一次性执行这些命令的过程。在 Windows 中，批处理文件通常以 .bat 或 .cmd 为扩展名。
+    * 批处理文件通常用于自动化和简化重复性任务。
 
 * **PowerShell**：微软于2006年发布的一种新型的命令行工具和脚本语言，它在Windows Server 2008和Windows Vista中首次引入，可以用于自动化系统管理任务和批处理任务。cmd可认为是powershell的子集。
 

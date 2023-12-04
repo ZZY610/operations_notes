@@ -2,6 +2,67 @@
 
 [TOC]
 
+## 基础命令
+### type
+用来显示文本文件的内容。
+
+```bat
+REM #--run--
+type [Drive:][Path]FileName
+```
+- `Drive:` 表示文件所在的驱动器。
+- `Path` 表示文件的路径。
+- `FileName` 表示文件的名称。
+
+以下是一些常见用法。
+#### 1. 显示文件内容
+- 最基本的用法是只提供文件的路径和名称，`type` 会显示文件的内容到命令提示符。
+   ```bash
+   type C:\Path\To\Your\File.txt
+   ```
+    
+- 同时合并显示多个文件的内容，使用通配符 `*`。
+   ```bash
+   type C:\Path\To\Your\Files\*.txt
+   ```
+- 如果文件内容很长，可以使用管道符 `| more` 将内容逐屏显示。
+   ```bash
+   type C:\Path\To\Your\File.txt | more
+   ```
+
+- 使用 `| find /n /v ""` 将每一行都编号。
+   ```bash
+   type C:\Path\To\Your\File.txt | find /n /v ""
+   ```
+#### 2. 文件内容重定向
+- 将某文件内容重定向到另一文件。
+    ```bash
+    type C:\Path\To\Your\File.txt > C:\Path\To\Your\Output.txt
+    ```
+- 使用通配符将多个文件的内容合并到一个文件中。
+   ```bash
+   type C:\Path\To\Your\Files\*.txt > C:\Path\To\Your\CombinedOutput.txt
+   ```
+
+
+#### 3. **显示内容并查找和替换特定字符串**
+- 使用 `| find "string"` 可以筛选包含特定字符串的行。
+   ```bash
+   type C:\Path\To\Your\File.txt | find "search_term"
+   ```
+- 使用 `| find "old_string" | replacethis"new_string"` 可以将文件内容中的**特定字符串替换为其他字符串**。
+   ```bash
+   type C:\Path\To\Your\File.txt | find "old_string" | replace "new_string"
+   ```
+
+### clip
+将命令行的输出重定向到剪切板。
+
+```bat
+command | clip
+clip < example.txt
+```
+
 ## 网络相关
 ### 1. ping
 Ping命令是一个用于测试与另一台计算机之间连接是否正常的网络工具。它发送一系列数据包到指定的目标地址，然后等待响应。通过计算数据包的往返时间以及丢失的数据包数量，可以确定网络连接的状态。
@@ -43,7 +104,7 @@ Ping命令是一个用于测试与另一台计算机之间连接是否正常的�
 
 
 ### 2. ipconfig
-`ipconfig` 查看网络适配器的IP地址、子网掩码、默认网关和DNS服务器等信息，可以用于诊断网络连接问题。
+`ipconfig` 查看网络适配器的IP地址、子网掩码、默认网关和DNS服务器等信息，常用于诊断网络连接问题。
 
 #### 参数
 * `ipconfig` ：显示基本的 **网卡** 配置信息，如ip地址、子网掩码、缺省网关。
@@ -66,9 +127,9 @@ tracert是Windows操作系统下的一个命令行工具，用于诊断网络通
 * 每个路由器的跃点数
 
 ### 4. arp
-显示和操作本地主机的ARP高速缓存。ARP（Address Resolution Protocol）是一个协议，用于将IP地址映射到物理硬件地址，以便于在局域网中进行通信。
+显示和操作本地主机的ARP高速缓存。ARP（Address Resolution Protocol）地址解析协议用于将IP地址映射到物理硬件地址，以便于在局域网中进行通信。
 
-* `arp -a`： 打印本地arp缓存
+* `arp -a`： 打印本地arp缓存，以每个不同的接口为分隔。接口指的是网络接口，通常对应于计算机上的物理或虚拟网络适配器（网卡）。每个接口IP地址后会有一个十六进制数，作为接口的索引。
 * `arp -d`： 清除本地arp缓存
 * `arp -s <ip地址> <物理地址>` ：添加静态ARP条目，手动配置网络设备的IP地址和MAC地址。
 * `arp -d`：删除arp静态条目
@@ -85,6 +146,7 @@ tracert是Windows操作系统下的一个命令行工具，用于诊断网络通
 | 参数 | 说明 |
 | -- | -- |
 | `-a` | 显示所有活动 TCP 连接以及计算机正在侦听的 TCP 和 UDP 端口。 |
+| -o            | 显示拥有的与每个连接关联的进程 ID。 |
 | -b | 显示创建每个连接或侦听端口所涉及的可执行文件。 在某些情况下，众所周知的可执行文件托管多个独立组件，并且在这种情况下，将显示创建连接或侦听端口所涉及的组件序列。 在这种情况下，可执行文件名称位于底部的 []，顶部是它调用的组件，依此类推，直到达到 TCP/IP。 |
 | -e |显示以太网统计信息，如发送和接收的字节数和数据包数。 此参数可以与 -s 组合。|
 | -n | 显示活动 TCP 连接，但地址和端口号用数字表示，而不会尝试确定名称。 |
@@ -160,6 +222,9 @@ netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>]
 
      这会使用 Google 的 DNS 服务器（IP 地址 8.8.8.8）进行查询。
 
+### 8. netsh
+network shell，命令行网络配置工具。
+
 ## 进程相关
 
 ### 1.  tasklist
@@ -174,6 +239,7 @@ netstat [-a] [-b] [-e] [-n] [-o] [-p <Protocol>] [-r] [-s] [<interval>]
 ### 2.  taskkill
 taskkill 命令用于结束一个或多个进程。可以通过进程 ID（PID）或映像名称来指定要结束的进程。例如：
 
+* `taskkill /F` 表示强制结束
 *   通过 PID 结束进程：`taskkill /PID 1234`，其中 1234 是要结束的进程的 PID。
 *   通过映像名称结束进程：`taskkill /IM notepad.exe`，将结束名为 notepad.exe 的进程。
 
