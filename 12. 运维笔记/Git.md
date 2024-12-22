@@ -33,6 +33,7 @@ Git 通过跟踪和记录文件的变化来管理仓库。每次对文件进行�
 管理者可以查看、回滚、比较和合并这些提交，从而管理项目的不同版本和变化。
 
 ### 1.3 工作区、暂存区、本地仓库
+![Img](./FILES/Git.md/img-20241222224411.png)
 
 #### 工作区 （Working Directory）
 
@@ -273,6 +274,214 @@ index ce01362..331b562 100644
 -   `git merge [branch]`：将指定分支合并到当前分支。
 -   `git branch -d [branch]`：删除指定分支。
 
+#### **Git 本地分支操作详解**
+
+Git 的分支是对代码版本的指针。通过分支可以同时处理多个开发任务而互不干扰。以下是 Git 本地分支的核心概念和常用操作的详细解释。
+
+---
+
+#### **1. 查看分支**
+- **查看当前分支和所有分支**：
+  ```bash
+  git branch
+  ```
+  - 输出中，当前分支会用 `*` 标记。
+  
+- **查看远程分支和本地分支**：
+  ```bash
+  git branch -a
+  ```
+  - `remotes/origin/...` 表示远程分支。
+
+- **查看已合并和未合并的分支**：
+  ```bash
+  git branch --merged   # 查看已合并到当前分支的分支
+  git branch --no-merged  # 查看未合并到当前分支的分支
+  ```
+
+---
+
+#### **2. 创建分支**
+- **创建新分支**：
+  ```bash
+  git branch new-branch
+  ```
+  - 创建名为 `new-branch` 的分支，但不会自动切换到该分支。
+
+- **创建并切换到新分支**：
+  ```bash
+  git checkout -b new-branch
+  ```
+  或：
+  ```bash
+  git switch -c new-branch
+  ```
+
+---
+
+#### **3. 切换分支**
+- **切换到已有分支**：
+  ```bash
+  git checkout branch-name
+  ```
+  或（推荐方式）：
+  ```bash
+  git switch branch-name
+  ```
+
+- **切换到上一个分支**：
+  ```bash
+  git checkout -
+  ```
+  或：
+  ```bash
+  git switch -
+  ```
+
+---
+
+#### **4. 合并分支**
+- **合并其他分支到当前分支**：
+  ```bash
+  git merge other-branch
+  ```
+  - 会尝试将 `other-branch` 的内容合并到当前分支。
+  - 如果有冲突，Git 会提示解决冲突。
+
+- **快速合并（无历史分支记录）**：
+  ```bash
+  git merge --squash other-branch
+  ```
+  - 会将其他分支的内容压缩成一次提交。
+
+---
+
+#### **5. 删除分支**
+- **删除本地分支**：
+  ```bash
+  git branch -d branch-name
+  ```
+  - 只能删除已合并到其他分支或远程的分支。
+
+- **强制删除未合并的分支**：
+  ```bash
+  git branch -D branch-name
+  ```
+
+---
+
+#### **6. 重命名分支**
+- **重命名当前分支**：
+  ```bash
+  git branch -m new-branch-name
+  ```
+
+- **重命名其他分支**：
+  ```bash
+  git branch -m old-branch-name new-branch-name
+  ```
+
+---
+
+#### **7. 比较分支**
+- **比较两个分支的差异**：
+  ```bash
+  git diff branch1 branch2
+  ```
+  - 显示 `branch1` 和 `branch2` 的文件差异。
+
+- **比较当前分支和其他分支的差异**：
+  ```bash
+  git diff other-branch
+  ```
+
+---
+
+#### **8. 跟踪远程分支**
+- **创建分支并设置跟踪远程分支**：
+  ```bash
+  git checkout -b new-branch origin/new-branch
+  ```
+  - 本地 `new-branch` 会追踪远程的 `origin/new-branch`。
+
+- **将本地分支设置为跟踪远程分支**：
+  ```bash
+  git branch --set-upstream-to=origin/branch-name
+  ```
+
+- **查看分支的上游信息**：
+  ```bash
+  git branch -vv
+  ```
+
+---
+
+#### **9. 保存工作区更改（避免冲突）**
+在切换分支之前，如果当前分支有未提交的更改，可以将其暂存：
+
+- **暂存工作目录的更改**：
+  ```bash
+  git stash
+  ```
+
+- **恢复暂存的更改**：
+  ```bash
+  git stash apply
+  ```
+  或：
+  ```bash
+  git stash pop
+  ```
+  - `pop` 会恢复更改并删除暂存记录。
+
+---
+
+#### **10. 强制覆盖分支**
+- **用其他分支强制覆盖当前分支**：
+  ```bash
+  git reset --hard other-branch
+  ```
+  - 将当前分支完全替换为 `other-branch` 的状态。
+
+- **用远程分支覆盖当前分支**：
+  ```bash
+  git reset --hard origin/branch-name
+  ```
+
+---
+
+#### **11. 分支合并冲突的解决**
+- 当合并冲突发生时：
+  - Git 会显示冲突的文件。
+  - 打开冲突文件，手动选择保留的内容。
+  - 标记冲突已解决：
+    ```bash
+    git add conflict-file
+    ```
+  - 完成合并：
+    ```bash
+    git commit
+    ```
+
+---
+
+#### **12. 实践中的分支策略**
+1. **主分支（`main` 或 `master`）**：
+   - 存放稳定的生产代码，不直接在主分支开发。
+   
+2. **开发分支（`dev`）**：
+   - 用于日常开发工作，合并新功能后测试。
+
+3. **功能分支（`feature/*`）**：
+   - 为单个功能或任务创建，完成后合并回 `dev` 分支。
+
+4. **修复分支（`hotfix/*`）**：
+   - 紧急修复线上问题时使用，完成后合并到 `main` 和 `dev`。
+
+---
+
+通过以上命令和分支策略，你可以灵活管理本地代码和远程分支的关系，提升团队协作和个人开发效率！
+
 ### 2.9 远程操作
 
 -   `git remote add [name] [url]`：添加一个新的远程仓库。
@@ -423,6 +632,32 @@ git push -u origin master
 ```
 
 在完成这些步骤后，本地项目将与远程 GitHub 仓库保持同步。
+
+### 强制推送和强制覆盖
+
+```bash
+# 强制拉取远程仓库的最新内容
+git fetch --all
+git reset --hard origin/main  # 替换 'main' 为你的默认分支名
+
+# 添加所有修改并提交
+git add .
+git commit -m "Auto-sync notes"
+
+# 强制推送到远程仓库
+git push origin main --force  # 替换 'main' 为你的默认分支名
+```
+
+
+#### 强制推送
+
+git add . 和 git commit：提交本地新增或修改的文件。
+git push --force：强制推送到远程仓库，覆盖远程的内容。
+
+#### 强制覆盖
+
+git fetch --all：获取远程仓库的所有更新。
+git reset --hard origin/main：重置本地分支为远程分支的状态，丢弃本地未提交的更改。
 
 ## 命令速查
 
