@@ -639,6 +639,7 @@ git push -u origin master
 # 强制拉取远程仓库的最新内容
 git fetch --all
 git reset --hard origin/main  # 替换 'main' 为你的默认分支名
+git clean -fd # 删除本地多余的文件和目录
 
 # 添加所有修改并提交
 git add .
@@ -658,7 +659,7 @@ git push --force：强制推送到远程仓库，覆盖远程的内容。
 
 git fetch --all：获取远程仓库的所有更新。
 git reset --hard origin/main：重置本地分支为远程分支的状态，丢弃本地未提交的更改。
-
+git clean -fd # 删除本地多余的文件和目录
 ## 命令速查
 
 ![Img](./FILES/Git.md/img-20230813200859.jpg)
