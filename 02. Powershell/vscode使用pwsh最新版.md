@@ -2,7 +2,7 @@
 在 Visual Studio Code (VSCode) 中，虽然默认可能会使用 PowerShell 5.1，但你可以手动配置它以使用你安装的 PowerShell 7.2 版本。以下是步骤：
 
 ### 1. **安装最新版PowerShell 7.2**
-如果你已经从 GitHub 上下载并安装了 PowerShell 7.2，请确保它能够在命令行中正常运行。你可以在终端（或命令提示符）中运行以下命令来检查 PowerShell 7.2 是否安装正确：
+GitHub下载 PowerShell 7.2，在终端（或命令提示符）中运行以下命令来检查 PowerShell 7.2 是否安装正确：
 
 ```bash
 pwsh --version
