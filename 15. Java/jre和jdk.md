@@ -1,14 +1,10 @@
 # jre和jdk
-JRE vs JDK：从“能跑”到“能开发”的完整家谱  
-——一张图、一张表、一段历史，彻底讲清
 
-────────────────────────
-1. 一句话区分
-• JRE（Java Runtime Environment）  
+- JRE（Java Runtime Environment）  
   = **Java 运行环境**  
   只负责“让 .class / .jar 跑起来”。
 
-• JDK（Java Development Kit）  
+- JDK（Java Development Kit）  
   = **Java 开发工具包**  
   = JRE + 编译器 + 调试器 + 一堆开发小工具。
 

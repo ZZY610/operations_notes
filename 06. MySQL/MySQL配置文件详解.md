@@ -1,206 +1,156 @@
 # MySQL配置文件详解
-```
-[client]
-#########################################################################
-#                                                                       #
-#                         MySQL客户端配置                               #
-#                                                                       #
-#########################################################################
-port = 3306 
-# MySQL客户端默认端口号
 
-socket = /data/mysql/my3306/mysql.sock
-# 用于本地连接的Unix套接字文件存放路径
+## [client] MySQL客户端配置
+port = 3306 # MySQL客户端默认端口号
 
-default-character-set = utf8mb4
-# MySQL客户端默认字符集
+socket = /data/mysql/my3306/mysql.sock # 用于本地连接的Unix套接字文件存放路径
 
-[mysql]
-#########################################################################
-#                                                                       #
-#                         MySQL命令行配置                               #
-#                                                                       #
-#########################################################################
-auto-rehash
-# 开启tab补齐功能
+default-character-set = utf8mb4 # MySQL客户端默认字符集
 
-socket = /data/mysql/my3306/mysql.sock
-# 用于本地连接的Unix套接字文件存放路径
+## [mysql] MySQL命令行配置
 
-default-character-set = utf8mb4
-# MySQL客户端默认字符集
+auto-rehash # 开启tab补齐功能
 
-max_allowed_packet = 256M
-# 指定在网络传输中一次消息传输量的最大值。系统默认值 为1MB，最大值是1GB，必须设置1024的倍数。
+socket = /data/mysql/my3306/mysql.sock # 用于本地连接的Unix套接字文件存放路径
 
-[mysqld]
-#########################################################################
-#                                                                       #
-#                         MySQL服务端配置                               #
-#                                                                       #
-#########################################################################
+default-character-set = utf8mb4 # MySQL客户端默认字符集
 
-########################################
-#                                      #
-#               General                #
-#                                      #
-########################################
-port = 3306
-# MySQL服务端默认监听的TCP/IP端口
+max_allowed_packet = 256M # 指定在网络传输中一次消息传输量的最大值。系统默认值 为1MB，最大值是1GB，必须设置1024的倍数。
 
-socket = /data/mysql/my3306/mysql.sock
-# 用于本地连接的Unix套接字文件存放路径
+## [mysqld] MySQL服务端配置
+### General
+port = 3306 # MySQL服务端默认监听的TCP/IP端口
 
-pid_file = /data/mysql/my3306/mysql.pid
-# 进程ID文件存放路径
+socket = /data/mysql/my3306/mysql.sock # 用于本地连接的Unix套接字文件存放路径
 
-basedir = /app/mysql
-# MySQL软件安装路径
+pid_file = /data/mysql/my3306/mysql.pid # 进程ID文件存放路径
 
-datadir = /data/mysql/my3306
-# MySQL数据文件存放路径
+basedir = /app/mysql # MySQL软件安装路径
 
-tmpdir = /data/mysql/my3306
-# MySQL临时文件存放路径
+datadir = /data/mysql/my3306 # MySQL数据文件存放路径
 
-character_set_server = utf8mb4
-# MySQL服务端字符集
+tmpdir = /data/mysql/my3306 # MySQL临时文件存放路径
 
-collation_server = utf8mb4_general_ci
-# MySQL服务端校对规则
+character_set_server = utf8mb4 # MySQL服务端字符集
 
-default-storage-engine = InnoDB
-# 设置默认存储引擎为InnoDB
+collation_server = utf8mb4_general_ci # MySQL服务端校对规则
 
-autocommit = OFF
-# 默认为ON，设置为OFF，关闭事务自动提交
+default-storage-engine = InnoDB # 设置默认存储引擎为InnoDB
 
-transaction_isolation = READ-COMMITTED
-# MySQL支持4种事务隔离级别，他们分别是：
-# READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE.
-# 如没有指定，MySQL默认采用的是REPEATABLE-READ，ORACLE默认的是READ-COMMITTED
+autocommit = OFF # 默认为ON，设置为OFF，关闭事务自动提交
+
+transaction_isolation = READ-COMMITTED # MySQL支持4种事务隔离级别，他们分别是：
+-- # READ-UNCOMMITTED, READ-COMMITTED, REPEATABLE-READ, SERIALIZABLE.
+-- # 如没有指定，MySQL默认采用的是REPEATABLE-READ，ORACLE默认的是READ-COMMITTED
 
 event_scheduler = ON 
-# 开启事件调度器event_scheduler
-
-#explicit_defaults_for_timestamp = ON
-# 控制TIMESTAMP数据类型的特性，默认OFF，设置为ON，update 时timestamp列关闭自动更新。（将来会被废弃）
+-- # 开启事件调度器event_scheduler
+-- #explicit_defaults_for_timestamp = ON
+-- # 控制TIMESTAMP数据类型的特性，默认OFF，设置为ON，update 时timestamp列关闭自动更新。（将来会被废弃）
 
 lower_case_table_names = 1
-# 库名、表名是否区分大小写。默认为0，设置1，不区分大小写，创建的表、数据库都以小写形式存放磁盘。
+-- # 库名、表名是否区分大小写。默认为0，设置1，不区分大小写，创建的表、数据库都以小写形式存放磁盘。
 
-########################################
-#                                      #
-#       Network & Connection           #
-#                                      #
-########################################
+### Network & Connection
 max_connections = 1000
-# MySQL允许的最大并发连接数，默认值151，如果经常出现Too Many Connections的错误提示，则需要增大此值。
+-- # MySQL允许的最大并发连接数，默认值151，如果经常出现Too Many Connections的错误提示，则需要增大此值。
 
 max_user_connections = 1000
-# 每个数据库用户的最大连接，（同一个账号能够同时连接到mysql服务的最大连接数），默认为0，表示不限制。
+-- # 每个数据库用户的最大连接，（同一个账号能够同时连接到mysql服务的最大连接数），默认为0，表示不限制。
 
 back_log = 500
-# MySQL监听TCP端口时设置的积压请求栈大小，默认50+(max_connections/5)，最大不超过900
+-- # MySQL监听TCP端口时设置的积压请求栈大小，默认50+(max_connections/5)，最大不超过900
 
 max_connect_errors = 10000
-# 每个主机的连接请求异常中断的最大次数。对于同一主机，如果有超出该参数值个数的中断错误连接，则该主机将被禁止连接。如需对该主机进行解禁，执行：FLUSH HOST。
+-- # 每个主机的连接请求异常中断的最大次数。对于同一主机，如果有超出该参数值个数的中断错误连接，则该主机将被禁止连接。如需对该主机进行解禁，执行：FLUSH HOST。
 
 interactive_timeout = 28800
-# 服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。默认值：28800秒（8小时）
+-- # 服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。默认值：28800秒（8小时）
 
 wait_timeout = 28800
-# 服务器关闭非交互连接之前等待活动的秒数。默认值：28800秒（8小时）
-# 指定一个请求的最大连接时间，当MySQL连接闲置超过一定时间后将会被强行关闭。对于4GB左右内存的服务器来说，可以将其设置为5~10。
-# 如果经常出现Too Many Connections的错误提示，或者show processlist命令发现有大量sleep进程，则需要同时减小interactive_timeout和wait_timeout值。
+-- # 服务器关闭非交互连接之前等待活动的秒数。默认值：28800秒（8小时）
+-- # 指定一个请求的最大连接时间，当MySQL连接闲置超过一定时间后将会被强行关闭。对于4GB左右内存的服务器来说，可以将其设置为5~10。
+-- # 如果经常出现Too Many Connections的错误提示，或者show processlist命令发现有大量sleep进程，则需要同时减小interactive_timeout和wait_timeout值。
 
 connect_timeout = 28800
-# 在获取连接时，等待握手的超时秒数，只在登录时生效。主要是为了防止网络不佳时应用重连导致连接数涨太快，一般默认即可。
+-- # 在获取连接时，等待握手的超时秒数，只在登录时生效。主要是为了防止网络不佳时应用重连导致连接数涨太快，一般默认即可。
 
 open_files_limit = 5000
-# mysqld能打开文件的最大个数，默认最小1024，如果出现too mant open files之类的就需要增大该值。
+-- # mysqld能打开文件的最大个数，默认最小1024，如果出现too mant open files之类的就需要增大该值。
 
 max_allowed_packet = 256M
-# 指定在网络传输中一次消息传输量的最大值。系统默认值 为1MB，最大值是1GB，必须设置1024的倍数。
+-- # 指定在网络传输中一次消息传输量的最大值。系统默认值 为1MB，最大值是1GB，必须设置1024的倍数。
 
-########################################
-#                                      #
-#          Thread & Buffer             #
-#                                      #
-########################################
+### Thread & Buffer
 sort_buffer_size = 2M
-# 排序缓冲区大小，connection级参数，默认大小为2MB。如果想要增加ORDER BY的速度，首先看是否可以让MySQL使用索引，其次可以尝试增大该值。
+-- # 排序缓冲区大小，connection级参数，默认大小为2MB。如果想要增加ORDER BY的速度，首先看是否可以让MySQL使用索引，其次可以尝试增大该值。
 
 read_buffer_size = 160M
-# 顺序读缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。对表进行顺序扫描的请求将分配一个读入缓冲区。
+-- # 顺序读缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。对表进行顺序扫描的请求将分配一个读入缓冲区。
 
 read_rnd_buffer_size = 160M
-# 随机读缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。默认值256KB，最大值4GB。当按任意顺序读取行时，将分配一个随机读缓存区。
+-- # 随机读缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。默认值256KB，最大值4GB。当按任意顺序读取行时，将分配一个随机读缓存区。
 
 join_buffer_size = 320M
-# 联合查询缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。
+-- # 联合查询缓冲区大小，connection级参数，该参数对应的分配内存是每连接独享。
 
 bulk_insert_buffer_size = 64M   
-# 批量插入数据缓存大小，可以有效提高插入效率，默认为8M
+-- # 批量插入数据缓存大小，可以有效提高插入效率，默认为8M
 
 thread_cache_size = 8
-# 服务器线程缓冲池中存放的最大连接线程数。默认值是8，断开连接时如果缓存中还有空间，客户端的线程将被放到缓存中，当线程重新被请求，将先从缓存中读取。
-# 根据物理内存设置规则如下：1G  —> 8，2G  —> 16，3G  —> 32，大于3G  —> 64
+-- # 服务器线程缓冲池中存放的最大连接线程数。默认值是8，断开连接时如果缓存中还有空间，客户端的线程将被放到缓存中，当线程重新被请求，将先从缓存中读取。
+-- # 根据物理内存设置规则如下：1G  —> 8，2G  —> 16，3G  —> 32，大于3G  —> 64
 
 thread_stack = 256K
-# 每个连接被创建时,mysql分配给它的内存。默认192KB，已满足大部分场景，除非必要否则不要动它，可设置范围128KB~4GB。
+-- # 每个连接被创建时,mysql分配给它的内存。默认192KB，已满足大部分场景，除非必要否则不要动它，可设置范围128KB~4GB。
 
 query_cache_type = 0
-# 关闭查询缓存
+-- # 关闭查询缓存
 
 query_cache_size = 0
-# 查询缓存大小，在高并发，写入量大的系统，建议把该功能禁掉。
+-- # 查询缓存大小，在高并发，写入量大的系统，建议把该功能禁掉。
 
 query_cache_limit = 4M    
-# 指定单个查询能够使用的缓冲区大小，缺省为1M
+-- # 指定单个查询能够使用的缓冲区大小，缺省为1M
 
 tmp_table_size = 1024M
-# MySQL的heap（堆积）表缓冲大小，也即内存临时表，默认大小是 32M。如果超过该值，则会将临时表写入磁盘。在频繁做很多高级 GROUP BY 查询的DW环境，增大该值。
-# 实际起限制作用的是tmp_table_size和max_heap_table_size的最小值。
+-- # MySQL的heap（堆积）表缓冲大小，也即内存临时表，默认大小是 32M。如果超过该值，则会将临时表写入磁盘。在频繁做很多高级 GROUP BY 查询的DW环境，增大该值。
+-- # 实际起限制作用的是tmp_table_size和max_heap_table_size的最小值。
 
 max_heap_table_size = 1024M
-# 用户可以创建的内存表(memory table)的大小，这个值用来计算内存表的最大行数值。
+-- # 用户可以创建的内存表(memory table)的大小，这个值用来计算内存表的最大行数值。
 
 table_definition_cache = 400
-# 表定义缓存区，缓存frm文件。表定义(global)是全局的，可以被所有连接有效的共享。
+-- # 表定义缓存区，缓存frm文件。表定义(global)是全局的，可以被所有连接有效的共享。
 
 table_open_cache = 1000
-# 所有SQL线程可以打开表缓存的数量，缓存ibd/MYI/MYD文件。 打开的表(session级别)是每个线程，每个表使用。
+-- # 所有SQL线程可以打开表缓存的数量，缓存ibd/MYI/MYD文件。 打开的表(session级别)是每个线程，每个表使用。
 
 table_open_cache_instances = 4
-# 对table cache 能拆成的分区数，用于减少锁竞争，最大值64.
+-- # 对table cache 能拆成的分区数，用于减少锁竞争，最大值64.
 
-########################################
-#                                      #
-#               Safety                 #
-#                                      #
-########################################
-#sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,ONLY_FULL_GROUP_BY
+### Safety
+-- #sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_AUTO_VALUE_ON_ZERO,ONLY_FULL_GROUP_BY
 sql_mode = NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER
-# MySQL支持的SQL语法模式，与其他异构数据库之间进行数据迁移时，SQL Mode组合模式会有帮助。
+-- # MySQL支持的SQL语法模式，与其他异构数据库之间进行数据迁移时，SQL Mode组合模式会有帮助。
 
 local_infile = OFF
-# 禁用LOAD DATA LOCAL命令
+-- # 禁用LOAD DATA LOCAL命令
 
 plugin-load = validate_password.so
-# 加密认证插件，强制mysql设置复杂密码
+-- # 加密认证插件，强制mysql设置复杂密码
 
 skip-external-locking
-#skip-locking 
-# 避免MySQL的外部锁定，减少出错几率，增强稳定性。
+-- #skip-locking 
+-- # 避免MySQL的外部锁定，减少出错几率，增强稳定性。
 
 skip-name-resolve 
-# 禁止MySQL对外部连接进行DNS解析，消除MySQL进行DNS解析。如果开启该选项，所有远程主机连接授权都要使用IP地址方式，否则MySQL将无法正常处理连接请求！
+-- # 禁止MySQL对外部连接进行DNS解析，消除MySQL进行DNS解析。如果开启该选项，所有远程主机连接授权都要使用IP地址方式，否则MySQL将无法正常处理连接请求！
 
-#skip-networking 
-# 不允许CP/IP连接，只能通过命名管道（Named Pipes）、共享内存（Shared Memory）或Unix套接字（Socket）文件连接。
-# 如果Web服务器以远程连接方式访问MySQL数据库服务器，则不要开启该选项，否则无法正常连接！
-# 适合应用和数据库共用一台服务器的情况，其他客户端无法通过网络远程访问数据库
+-- #skip-networking 
+-- # 不允许CP/IP连接，只能通过命名管道（Named Pipes）、共享内存（Shared Memory）或Unix套接字（Socket）文件连接。
+-- # 如果Web服务器以远程连接方式访问MySQL数据库服务器，则不要开启该选项，否则无法正常连接！
+-- # 适合应用和数据库共用一台服务器的情况，其他客户端无法通过网络远程访问数据库
 
 ########################################
 #                                      #

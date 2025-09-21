@@ -1,7 +1,7 @@
 # MySQL用户和权限
 
 ## mysql中没有oracle模式的概念
-MySQL 中确实没有像 Oracle 中“模式（Schema）”这种概念。
+MySQL 中没有像 Oracle 中“模式（Schema）”这种概念。
 
 ### MySQL 的用户和数据库
 - **数据库**：在 MySQL 中，数据库（Database）是逻辑上包含表、视图、存储过程、触发器等数据库对象的一个集合。数据库是管理数据的主要单位。
